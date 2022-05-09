@@ -1,0 +1,18 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+//cria uma tabela na db
+model Feedback{
+  id String @id @default(uuid()) //@id seta a primary key
+  type String
+  comment String
+  screenshot String?
+
+  @@map("feedbacks")//renomeia a tabela
+}
